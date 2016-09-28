@@ -4,12 +4,10 @@ var app = express();
 var bodyParser = require('body-parser');
 
 // Use either one of these database libraries
-var mongodb = require('mongodb').MongoClient;
+//var mongodb = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 
-
 // Global variables
-var database;
 var dbManager = mongoose;
 
 // Define the database models
@@ -31,16 +29,12 @@ app.post('/api/message', function(req, res) {
     var message = new Message(req.body);
     message.save();
 
-    // MongoDB insertion
-    //database.collection('messages').insertOne(req.body);
-
     res.status(200);
 });
 
 dbManager.connect("mongodb://localhost:27017/test", function(err, db) {
     if (!err) {
         console.log("We are connected to MongoDB");
-        database = db;
         GetMessages();
     }
 });
