@@ -2,10 +2,20 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+
+// Use either one of these database libraries
 var mongodb = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
+
 
 // Global variables
 var database;
+var dbManager = mongoose;
+
+// Define the database models
+var Message = dbManager.model('Message', {
+    msg: String
+});
 
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -16,14 +26,22 @@ app.use(function(req, res, next) {
 
 app.post('/api/message', function(req, res) {
     console.log(req.body);
-    database.collection('messages').insertOne(req.body);
+
+    // Mongoose DB insertion
+    var message = new Message(req.body);
+    message.save();
+
+    // MongoDB insertion
+    //database.collection('messages').insertOne(req.body);
+
     res.status(200);
 });
 
-mongodb.connect("mongodb://localhost:27017/test", function(err, db) {
+dbManager.connect("mongodb://localhost:27017/test", function(err, db) {
     if (!err) {
         console.log("We are connected to MongoDB");
         database = db;
+        GetMessages();
     }
 });
 
@@ -31,3 +49,8 @@ var server = app.listen(5000, function() {
     console.log('listening on port: ', server.address().port);
 });
 
+function GetMessages() {
+    Message.find({}).exec(function(err, result) {
+        console.log(result);
+    });
+}
