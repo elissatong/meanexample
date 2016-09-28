@@ -1,4 +1,6 @@
 var User = require('../models/user');
+var jwt = require('jwt-simple');
+var moment = require('moment');
 
 module.exports = {
     register: function (req, res) {
@@ -20,10 +22,21 @@ module.exports = {
                         message: err.message
                     });
                 }
-                res.status(200);
+                res.status(200).send({token: createToken(result)});
             });
         });
 
 
     }
+}
+
+function createToken(user) {
+    var payload = {
+        sub: user._id, // subject
+        iat: moment().unix(), // issue at time
+        exp: moment().add(14, 'days').unix() // expiry time
+    };
+
+    // TODO: use a secret key
+    return jwt.encode(payload, 'need to insert a secret key');
 }
