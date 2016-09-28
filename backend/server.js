@@ -34,6 +34,10 @@ app.post('/api/message', function(req, res) {
     res.status(200);
 });
 
+app.post('/auth/register', function(req, res) {
+    console.log(req.body);
+});
+
 dbManager.connect("mongodb://localhost:27017/test", function(err, db) {
     if (!err) {
         console.log("We are connected to MongoDB");
