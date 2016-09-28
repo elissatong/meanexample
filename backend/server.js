@@ -7,16 +7,11 @@ var bodyParser = require('body-parser');
 //var mongodb = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 
-// Global variables
-var dbManager = mongoose;
-
-// Define the database models
-var Message = dbManager.model('Message', {
-    msg: String
-});
+var Message = require('./models/message');
+var User = require('./models/user');
 
 app.use(bodyParser.json());
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
     next();
@@ -24,7 +19,7 @@ app.use(function(req, res, next) {
 
 app.get('/api/message', GetMessages);
 
-app.post('/api/message', function(req, res) {
+app.post('/api/message', function (req, res) {
     console.log(req.body);
 
     // Mongoose DB insertion
@@ -34,22 +29,31 @@ app.post('/api/message', function(req, res) {
     res.status(200);
 });
 
-app.post('/auth/register', function(req, res) {
+app.post('/auth/register', function (req, res) {
     console.log(req.body);
+    var user = new User(req.body);
+    user.save(function (err, result) {
+        if (err) {
+            res.status(500).send({
+                message: err.message
+            });
+        }
+        res.status(200);
+    });
 });
 
-dbManager.connect("mongodb://localhost:27017/test", function(err, db) {
+mongoose.connect("mongodb://localhost:27017/test", function (err, db) {
     if (!err) {
         console.log("We are connected to MongoDB");
     }
 });
 
-var server = app.listen(5000, function() {
+var server = app.listen(5000, function () {
     console.log('listening on port: ', server.address().port);
 });
 
 function GetMessages(req, res) {
-    Message.find({}).exec(function(err, result) {
+    Message.find({}).exec(function (err, result) {
         res.send(result);
     });
 }
