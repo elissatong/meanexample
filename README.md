@@ -25,57 +25,58 @@ Sample commands to run the project after cloning:
 
 ## FRONTEND
 
-- Navigate to the frontend folder
-meanexample username$ cd frontend
+Navigate to the frontend folder
 
-- Build the gulp frontend project
-frontend username$ gulp
+> meanexample username$ cd frontend
 
-- Start the gulp server, leave it running
-frontend username$ gulp serve
+Build the gulp frontend project
 
-- Afterwards, the website will open on the browser automatically
-- It will also output the URLs to console. For example:
+> frontend username$ gulp
 
- Access URLs:
- -----------------------------------
-       Local: http://localhost:3000/
-    External: http://10.0.0.6:3000/
- -----------------------------------
- 
+Start the gulp server, leave it running
+
+> frontend username$ gulp serve
+
+Afterwards, the website will open on the browser automatically. It will also output the URLs to console. For example:
+
+> Access URLs:
+> Local: http://localhost:3000/
+> External: http://10.0.0.6:3000/
+    
 ## BACKEND 
 
-- Backend uses node.js, you will need to install npm packages, which I've .gitignored
-- Hence you want to install the needed packages
+Backend uses node.js, you will need to install npm packages, which I've .gitignored. Hence you want to install the needed packages
 
-meanexample username$ cd backend
-backend username$ npm init
-backend username$ npm install express --save
-backend username$ npm install mongoose --save
-backend username$ bower install satellizer --save
-backend username$ npm install jwt-simple --save
-backend username$ npm install moment --save
+> meanexample username$ cd backend
+> backend username$ npm init
+> backend username$ npm install express --save
+> backend username$ npm install mongoose --save
+> backend username$ bower install satellizer --save
+> backend username$ npm install jwt-simple --save
+> backend username$ npm install moment --save
 
-- The save flag will save all required packages as dependencies in backend/package.json
+The save flag will save all required packages as dependencies in backend/package.json
 
-"dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "jwt-simple": "^0.5.0",
-    "moment": "^2.15.1",
-    "mongoose": "^4.6.1"
-  }
+> "dependencies": {
+>   "body-parser": "^1.15.2",
+>   "express": "^4.14.0",
+>   "jwt-simple": "^0.5.0",
+>   "moment": "^2.15.1",
+>   "mongoose": "^4.6.1"
+> }
 
-- Don't forget to install and run the mongoDB server
-- New install
-username$ brew install mongodb --with-openssl
+Don't forget to install and run the mongoDB server. For new install:
 
-- Existing install needs an upgrade
-username$ brew upgrade mongodb --with-openssl
+> username$ brew install mongodb --with-openssl
 
-- Create temp directory and set folder permissions
-username$ sudo mkdir /data/db
-username$ sudo chown $USER /data/db
+Existing install needs an upgrade
 
-- Start the mongoDB server
-username$ mongod
+> username$ brew upgrade mongodb --with-openssl
+
+Create temp directory and set folder permissions
+
+> username$ sudo mkdir /data/db
+> username$ sudo chown $USER /data/db
+
+Start the mongoDB server
+> username$ mongod
