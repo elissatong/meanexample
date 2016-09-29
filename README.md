@@ -7,7 +7,7 @@ meanexample username$ npm install -g yo gulp bower generator-gulp-angular
 meanexample username$ cd frontend
 frontend username$ yo gulp-angular mymessenger
 
-## Gulp Generator Default settings:
+## Gulp Generator Default Settings
 - Angular version? Select: 1.5.x (stable)
 - Angular modules? Select: disable all
 - jQuery? Select: None (Angular will use its own jqLite)
@@ -79,7 +79,8 @@ The save flag will save all required packages as dependencies in backend/package
 
 > }
 
-# DATABASE
+## DATABASE
+
 Don't forget to install and run the mongoDB server. For new install:
 
 > username$ brew install mongodb --with-openssl
