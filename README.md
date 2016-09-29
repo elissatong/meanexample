@@ -40,7 +40,9 @@ Start the gulp server, leave it running
 Afterwards, the website will open on the browser automatically. It will also output the URLs to console. For example:
 
 > Access URLs:
+
 > Local: http://localhost:3000/
+
 > External: http://10.0.0.6:3000/
     
 ## BACKEND 
@@ -64,11 +66,17 @@ Backend uses node.js, you will need to install npm packages, which I've .gitigno
 The save flag will save all required packages as dependencies in backend/package.json
 
 > "dependencies": {
+
 >   "body-parser": "^1.15.2",
+
 >   "express": "^4.14.0",
+
 >   "jwt-simple": "^0.5.0",
+
 >   "moment": "^2.15.1",
+
 >   "mongoose": "^4.6.1"
+
 > }
 
 # DATABASE
@@ -83,6 +91,7 @@ Existing install needs an upgrade
 Create temp directory and set folder permissions
 
 > username$ sudo mkdir /data/db
+
 > username$ sudo chown $USER /data/db
 
 Start the mongoDB server
