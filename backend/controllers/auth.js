@@ -2,7 +2,10 @@ var User = require('../models/user');
 var jwt = require('jwt-simple');
 var moment = require('moment');
 
+var SECRET_KEY = 'need to insert a secret key';
+
 module.exports = {
+    secret: SECRET_KEY,
     register: function (req, res) {
         console.log(req.body);
 
@@ -25,8 +28,26 @@ module.exports = {
                 res.status(200).send({token: createToken(result)});
             });
         });
+    },
+    login: function(req, res) {
+        User.findOne({
+            email: req.body.email
+        }, function(err, user) {
 
+            // Can't find user of login email
+            if (!user) {
+                return res.status(401).send({message: 'Email or Password invalid'});
+            }
 
+            if (req.body.pwd == user.pwd) {
+                res.send({token: createToken(user)});
+            }
+            else {
+                return res.status(401).send({
+                    message: 'Invalid email and/or password'
+                });
+            }
+        });
     }
 }
 
@@ -38,5 +59,5 @@ function createToken(user) {
     };
 
     // TODO: use a secret key
-    return jwt.encode(payload, 'need to insert a secret key');
+    return jwt.encode(payload, SECRET_KEY);
 }
