@@ -48,11 +48,17 @@ Afterwards, the website will open on the browser automatically. It will also out
 Backend uses node.js, you will need to install npm packages, which I've .gitignored. Hence you want to install the needed packages
 
 > meanexample username$ cd backend
+
 > backend username$ npm init
+
 > backend username$ npm install express --save
+
 > backend username$ npm install mongoose --save
+
 > backend username$ bower install satellizer --save
+
 > backend username$ npm install jwt-simple --save
+
 > backend username$ npm install moment --save
 
 The save flag will save all required packages as dependencies in backend/package.json
@@ -65,6 +71,7 @@ The save flag will save all required packages as dependencies in backend/package
 >   "mongoose": "^4.6.1"
 > }
 
+# DATABASE
 Don't forget to install and run the mongoDB server. For new install:
 
 > username$ brew install mongodb --with-openssl
