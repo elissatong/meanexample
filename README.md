@@ -6,17 +6,18 @@ Initial project was created using a generator (gulp-angular) with Yeoman:
 meanexample username$ npm install -g yo gulp bower generator-gulp-angular
 meanexample username$ cd frontend
 frontend username$ yo gulp-angular mymessenger
-# Default settings used:
-# 1. Angular version? Select: 1.5.x (stable)
-# 2. Angular modules? Select: disable all
-# 3. jQuery? Select: None (Angular will use its own jqLite)
-# 4. REST resource library? Select: None, $http is enough
-# 5. Angular router? Select: UI Router, flexible routing with nested views
-# 6. UI framework? Select: Bootstrap
-# 7. Bootstrap component? Select: Angular UI Bootstrap, Bootstrap components written in pure AngularJS by the AngularUI Team
-# 8. CSS preprocessor? Select: Sass (Node)
-# 9. JS preprocessor? Select: ES6 (Babel formerly 6to5), ECMAScript 6 compiled with Babel which requires no runtime
-# 10. HTML template engine? Select: None, I like to code in standard HTML
+
+Default settings used:
+- Angular version? Select: 1.5.x (stable)
+- Angular modules? Select: disable all
+- jQuery? Select: None (Angular will use its own jqLite)
+- REST resource library? Select: None, $http is enough
+- Angular router? Select: UI Router, flexible routing with nested views
+- UI framework? Select: Bootstrap
+- Bootstrap component? Select: Angular UI Bootstrap, Bootstrap components written in pure AngularJS by the AngularUI Team
+- CSS preprocessor? Select: Sass (Node)
+- JS preprocessor? Select: ES6 (Babel formerly 6to5), ECMAScript 6 compiled with Babel which requires no runtime
+- HTML template engine? Select: None, I like to code in standard HTML
 
 On the command line, you need to run the frontend, background, and database servers.
 Sample commands to run the project after cloning:
